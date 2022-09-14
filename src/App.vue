@@ -7,7 +7,7 @@
     <!-- 中间body部分 -->
     <div class="body">
       <div id="wheather"><div-weather></div-weather></div>
-      <div id="chart"><chart-radi v-if='DataList.length' :datalist="DataList"></chart-radi></div>
+      <div id="chart"><chart-radi :datalist="DataList"></chart-radi></div>
       <div id="dataset"><data-radi :dataset="DataList"></data-radi></div>
     </div>
 
@@ -47,7 +47,7 @@ export default {
     return {
       DataList
     }
-  }
+  },
 }
 </script>
 

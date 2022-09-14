@@ -18,9 +18,14 @@ echarts.use([GridComponent, LineChart, CanvasRenderer, UniversalTransition, Tool
 
 export default {
     props: ['datalist'],
+    data() {
+        return {
+            myuChart: null,
+        }
+    },
     mounted() {
         let chartDom = document.getElementById('main');
-        let myChart = echarts.init(chartDom);
+        this.myChart = echarts.init(chartDom);
         let option = {
             xAxis: {
                 type: 'category',
@@ -64,12 +69,28 @@ export default {
         }
 
         
-        option && myChart.setOption(option);
+        option && this.myChart.setOption(option);
 
 
         window.onresize = function() {
-            myChart.resize();
+            this.myChart.resize();
         };
+    },
+    watch: {
+        datalist: {
+            handler() {
+                this.myChart.setOption({
+                    xAxis: {
+                        data: this.datalist.map(item => item.time),
+                    },
+                    series: [
+                {
+                    data: this.datalist.map(item => item.value),
+                    },
+            ],
+                })
+            }
+        }
     }
 
     

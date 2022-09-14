@@ -22,6 +22,14 @@
         }
       }
     },
+    watch: {
+      dataset: {
+        deep: true,
+        handle() {
+          console.log('data has been changed')
+        }
+      }
+    }
   }
 </script>
 

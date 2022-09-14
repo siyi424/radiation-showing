@@ -15,12 +15,17 @@ export default {
         let humi = DataWeather[0].humidity;
 
         return {
+            DataWeather,
             temp,
             loc,
             humi
         }
     },
-
+    watch: {
+      DataWeather: {
+        deep: true
+      }
+    }
 }
 </script>
 
