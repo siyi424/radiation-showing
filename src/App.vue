@@ -6,7 +6,7 @@
 
     <!-- 中间body部分 -->
     <div class="body">
-      <div id="wheather"><div-wheather></div-wheather></div>
+      <div id="wheather"><div-weather></div-weather></div>
       <div id="chart"><chart-radi v-if='DataList.length' :datalist="DataList"></chart-radi></div>
       <div id="dataset"><data-radi :dataset="DataList"></data-radi></div>
     </div>
@@ -35,13 +35,13 @@
 <script>
 import ChartRadi from './components/ChartRadi.vue'
 import DataRadi from './components/DataRadi.vue'
-import DivWheather from './components/DivWheather.vue'
+import DivWeather from './components/DivWeather.vue'
 // 引入数据
 import DataList from '../public/DataList.json'
 
 
 export default {
-  components: { ChartRadi, DataRadi, DivWheather},
+  components: { ChartRadi, DataRadi, DivWeather},
   name: 'app',
   data() {
     return {
@@ -63,9 +63,7 @@ export default {
 }
 
 #app {
-  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(90,92,106,1) 0%, rgba(32,45,58,1) 81.3% );
-  display: flex;
-  flex-direction: column;
+  background: #073A4B;
   color: whitesmoke;
 }
 
@@ -124,12 +122,14 @@ export default {
 
 /* header */
 .header {
-  flex: 1;
+  height: 8vh;
   animation-name: fadeInDown;
   animation-duration: 2s;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: gray;
+  box-shadow: black 0 2px 40px ;
 }
 
 .title-center {
@@ -140,32 +140,34 @@ export default {
 
 /* body */
 .body {
-  flex: 11;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding: 20px 40px;
+  padding: 30px;
+
+  width: 60%;
+  margin: 0 auto;
 }
 
 #chart {
   background: rgba(225,225,225,0.9);
-  flex: 1;
   animation-name: fadeInLeft;
   animation-duration: 2s;
-  margin-right: 20px;
+  flex: 1;
+  box-shadow: black 2px 2px 40px;
 }
 
 #dataset {
-  flex: 1;
+  flex: 2;
   animation-name: fadeInRight;
   animation-duration: 2s;
-  margin-left: 20px;
+  margin: 60px 0;
+  box-shadow: black 2px 2px 40px;
 }
 
 
 /* footer */
 .footer {
-  flex: 2;
   display: flex;
   max-height: 14.4%;
   justify-content: space-between;
@@ -173,6 +175,9 @@ export default {
   animation-name: fadeInUp;
   animation-duration: 2s;
   padding: 0 40px;
+
+  background: gray;
+  box-shadow: black 0px 2px 40px;
 
 }
 
