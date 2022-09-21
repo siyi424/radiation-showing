@@ -6,9 +6,10 @@
 
     <!-- 中间body部分 -->
     <div class="body">
-      <div id="wheather"><div-weather></div-weather></div>
+      <div id="wheather"><div-weather :weather="DataWeather"></div-weather></div>
       <div id="chart"><chart-radi :datalist="DataList"></chart-radi></div>
       <div id="dataset"><data-radi :dataset="DataList"></data-radi></div>
+      <!-- <button @click="plus1">Plus Data</button> -->
     </div>
 
 
@@ -36,20 +37,36 @@
 import ChartRadi from './components/ChartRadi.vue'
 import DataRadi from './components/DataRadi.vue'
 import DivWeather from './components/DivWeather.vue'
-// 引入数据
-import Datas from '../public/DataList.json'
+import axios from 'axios'
+
 
 
 export default {
   components: { ChartRadi, DataRadi, DivWeather},
   name: 'app',
-  data() {
-    let DataList = Datas
+  data: () => ({
+    DataList: [],
+    DataWeather: [],
+  }),
+  async created() {
+    // const res = await axios.get("/DataList.json");
+    await axios.get('DataList.json').then((res) => {
+      this.DataList = res.data
+    }),
 
-    return {
-      DataList
-    }
-  }
+    await axios.get('DataWeather.json').then((res) => {
+      this.DataWeather = res.data
+    })
+  },
+  
+  // methods: {
+  //   plus1() {
+  //     let temp = {"time": "2022/11/02",
+  //       "value": 115,
+  //       "isSafed": "安全"};
+  //     this.DataList.push(temp)
+  //   }
+  // }
 }
 </script>
 

@@ -20,7 +20,7 @@ export default {
     props: ['datalist'],
     data() {
         return {
-            myuChart: null,
+            myChart: null,
         }
     },
     mounted() {
@@ -78,6 +78,7 @@ export default {
     },
     watch: {
         datalist: {
+            deep: true,
             handler() {
                 this.myChart.setOption({
                     xAxis: {

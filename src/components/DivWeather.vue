@@ -1,31 +1,22 @@
 <template>
     <div class="allInfo">
-        <div id="location">{{this.loc}}</div>
-        <div id="info">温度：{{this.temp}} , 湿度：{{this.humi}}</div>
+        <div id="location">{{weather[0].location}}</div>
+        <div id="info">温度：{{weather[0].temperature}} , 湿度：{{weather[0].humidity}}</div>
     </div>
 </template>
 
 <script>
-import DataWeather from '../../public/DataWeather.json'
 
 export default {
-    data() {
-        let temp = DataWeather[0].temperature;
-        let loc = DataWeather[0].location;
-        let humi = DataWeather[0].humidity;
+    props: ['weather'],
+    
 
-        return {
-            DataWeather,
-            temp,
-            loc,
-            humi
-        }
-    },
     watch: {
-      DataWeather: {
-        deep: true
+      weather: {
+        deep: true,
       }
-    }
+    },
+
 }
 </script>
 
