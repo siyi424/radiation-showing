@@ -37,17 +37,19 @@ import ChartRadi from './components/ChartRadi.vue'
 import DataRadi from './components/DataRadi.vue'
 import DivWeather from './components/DivWeather.vue'
 // 引入数据
-import DataList from '../public/DataList.json'
+import Datas from '../public/DataList.json'
 
 
 export default {
   components: { ChartRadi, DataRadi, DivWeather},
   name: 'app',
   data() {
+    let DataList = Datas
+
     return {
       DataList
     }
-  },
+  }
 }
 </script>
 
