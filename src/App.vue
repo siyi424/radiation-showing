@@ -50,11 +50,11 @@ export default {
   }),
   async created() {
     // const res = await axios.get("/DataList.json");
-    await axios.get('http://localhost:5500/DataList.json').then((res) => {
+    await axios.get('./DataList.json').then((res) => {
       this.DataList = res.data
     }),
 
-    await axios.get('http://localhost:5500/DataWeather.json').then((res) => {
+    await axios.get('./DataWeather.json').then((res) => {
       this.DataWeather = res.data
     })
   },
